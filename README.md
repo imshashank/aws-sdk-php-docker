@@ -1,5 +1,7 @@
 # Docker files for AWS SDK for PHP
 
+[![Build Status](https://img.shields.io/travis/aws/aws-sdk-php.svg?style=flat)](https://travis-ci.org/imshashank/aws-sdk-php-docker)
+
 #Building docker images
 
 ```
