@@ -3,11 +3,6 @@ sudo: required
 services:
   - docker
 
-language: go
-
-go:
-  - '1.5'
-
 env:
   global:
     - secure: "kM/EpxIyynynJTm2qK/T7CCIooth99Xd1Q3VEwABmX0oK0R0proI0GgklSKFd46zJwZg4CPmrBx9M7AIYHraiHVyVo0XYV3lHYaT0/6fuHMhDk0OuHOwL7VOCrnRULWRS1ItuwtWj6ViybVMz9YeLhpQvU73+8eJVP8aTFy9fVRHGddOmzkPWkycMZlDg9QlEvXpmwbPyTh5LmveeSeUhusOAF1p7+m621fEeX7wJEKBBlZtYAR1yQ6qW0dV0nFhViqxXpUeHNPFs4hH5YMKFCIA+02Rafw9enWxO45fYVQ9VhPQHqBBfmDxr7ELrEN1Vj4HnxiW64fUvnpGuVEvTfyPs1ebzdmdzD34GfbHTfFHMxAMEv4iga58pD5ccpi0EHpgLU20N5uw41un1qyw70/90VkeFJ33FFvSXHLob4k33a51XmgXEYXYBvQBdFnbiRHYyqfUDuGejzaQuxsE+/dentHIUgXBU0vOTcvG34QptIsw2v6YYTdxpNyS5IiJz2kTRHwQFs8iDhHo6nzhIgWLdP83Mgbq6nTQ116eaAdDOgLnNkDeIcJxLdr2jvDxVPpvIOvgvF3qTNLY1sv5BzTutMSnoR5dhby153MyJHLQVORT3TZqyU5kmHTDo6xHHodSgmo9elyPZ/Em0Ixi3A5KZRcxHMtVppT8rQfPL2I=" 
@@ -23,3 +18,10 @@ after_success:
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO
+  - docker build -f php-5.6/Dockerfile -t $REPO:php-5.6 .
+  - docker push $REPO:php-5.6
+  - docker build -f php-7.0/Dockerfile -t $REPO:php-7.0 .
+  - docker push $REPO:php-7.0
+  - docker build -f xdebug/Dockerfile -t $REPO:xdebug .
+  - docker push $REPO:xdebug
+
