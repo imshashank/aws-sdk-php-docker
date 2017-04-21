@@ -21,12 +21,16 @@ script:
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -f Dockerfile -t $REPO:$COMMIT .
   - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO
-  - docker build -f php-5.6/Dockerfile -t $REPO:php-5.6 .
-  - docker push $REPO:php-5.6
-  - docker build -f php-7.0/Dockerfile -t $REPO:php-7.0 .
-  - docker push $REPO:php-7.0
-  - docker build -f xdebug/Dockerfile -t $REPO:xdebug .
-  - docker push $REPO:xdebug
-
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "php-5.6"; else echo php-5.6-$TRAVIS_BRANCH ; fi`
+  - docker build -f php-5.6/Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker push $REPO:$TAG
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "php-7.0"; else echo php-7.0-$TRAVIS_BRANCH ; fi`
+  - docker build -f php-7.0/Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker push $REPO:$TAG
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "xdebug"; else echo xdebug-$TRAVIS_BRANCH ; fi`
+  - docker build -f xdebug/Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker push $REPO:$TAG
