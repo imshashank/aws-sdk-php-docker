@@ -19,8 +19,9 @@ script:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO=imshashank/aws-sdk-php
   - docker build -f Dockerfile -t $REPO:latest .
-  - docker tag $REPO:latest $REPO:7.1
+  - docker tag $REPO:latest $REPO:php-7.1
   - if [ "$TRAVIS_BRANCH" == "master" ]; then docker push $REPO:latest;fi
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then docker push $REPO:php-7.1;fi
   - docker build -f php-5.6/Dockerfile -t $REPO:php-5.6 .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then docker push $REPO:php-5.6;fi
   - docker build -f php-7.0/Dockerfile -t $REPO:php-7.0 .
