@@ -21,7 +21,7 @@ docker build -t imshashank/aws-sdk-php .
 
 1. Install [Docker](https://www.docker.com/).
 
-2. Download [automated build](https://registry.hub.docker.com/u/dockerfile/imshashank/aws-sdk-php) from public [Docker Hub Registry](https://registry.hub.docker.com/): `docker pull imshashank/aws-sdk-php`
+2. Download [automated build](https://hub.docker.com/r/imshashank/aws-sdk-php/) from public [Docker Hub Registry](https://registry.hub.docker.com/): `docker pull imshashank/aws-sdk-php`
 
    (alternatively, you can build an image from Dockerfile: `docker build -t="imshashank/aws-sdk-php" github.com/imshashank/aws-sdk-php-docker`)
 
