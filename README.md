@@ -8,10 +8,6 @@
 docker build -t imshashank/aws-sdk-php .
 ```
 
-### Base Docker Image
-
-* [dockerfile/php](http://dockerfile.github.io/#/php)
-
 ### Docker Tags
 
 `dockerfile/java` provides multiple tagged images:
